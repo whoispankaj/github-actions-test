@@ -13,6 +13,7 @@ jobs:
       - name: List files
         run:  |
           pwd
+          cd .github
           ls -a
       - name: Simple javascript Actions
         id: greet
