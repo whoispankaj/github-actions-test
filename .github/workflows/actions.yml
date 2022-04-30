@@ -15,6 +15,10 @@ jobs:
           pwd
           cd .github/workflows
           ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{github.token}}"
       - name: Simple javascript Actions
         id: greet
         uses: actions/hello-world-javascript-action@v1
