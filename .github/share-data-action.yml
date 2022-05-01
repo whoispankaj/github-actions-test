@@ -1,0 +1,20 @@
+name: Share data workflow
+on: [push]
+jobs:
+  example-job:
+    name: Save output
+    steps:
+      - shell: bash
+        run:  |
+          expr 1+1 > output.log
+      - name:  Upload output file
+        id: 'uploadfile'
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        needs:  ['uploadfile']
+        with:
+          name: output-log-file
