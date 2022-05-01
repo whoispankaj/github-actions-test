@@ -3,10 +3,9 @@ on: push
 jobs:
   node-docker:
     runs-on:  ubuntu-latest
-    container:  node:13.5.9-alpine3.10
+    container:  node:18-alpine3.14
     steps:
       - name: Log node version
         run: |
           node -v
           cat /etc/os-release
-          
