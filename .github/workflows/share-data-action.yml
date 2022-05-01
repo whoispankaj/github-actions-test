@@ -1,8 +1,9 @@
 name: Share data workflow
 on: [push]
 jobs:
-  example-job:
+  upload-job:
     name: Save output
+    runs-on:  ubuntu-latest
     steps:
       - shell: bash
         run:  |
@@ -13,8 +14,12 @@ jobs:
         with:
           name: output-log-file
           path: output.log
+  download-job:
+    name: Download Log
+    runs-on:  ubuntu-latest
+    needs:  ['upload-job']
+    steps:  
       - name: Download a single artifact
         uses: actions/download-artifact@v3
-        needs:  ['uploadfile']
         with:
           name: output-log-file
